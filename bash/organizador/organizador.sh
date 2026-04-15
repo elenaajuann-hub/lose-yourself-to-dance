@@ -44,3 +44,10 @@ do
     index=$(echo "$file" | cut -d'_' -f1 | rev | cut -c 1)
     mv "$1/$file" "$1/P$index/"
 done < <(ls $1 | grep -E ".sh")
+
+#Update 15/04/26
+#Create a log file to record the date of new scripts
+touch log_file
+
+date=$(stat -c %x "$1") 
+echo "$date" >> log_file
